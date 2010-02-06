@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+ <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+ <meta http-equiv="content-language" content="en" />
+ <meta name="robots" content="all,follow" />
+ <meta name="author" lang="en" content="Andy Atkinson" />
+ <meta name="copyright" lang="en" content="Andy Atkinson" />
+ <meta name="description" content="Flickr search example with jQuery by Andy Atkinson" />
+<title>Flickr search example with jQuery</title>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
+<script type="text/javascript" src="js/jquery.photosearch.js"></script>
+<style>
+	body {
+	 background-color: #888;
+	 font-family: Lucida Grande;
+	 font-size: 11px;
+	 margin: 35px;
+	 width: 520px;
+	 height: 100%;
+	}
+	div#wrapper {
+		background-color: #fff;
+		margin: 10px;
+		padding: 20px;
+		border: 10px solid lightgray;
+	}
+</style>
+<script type='text/javascript'>
+	$(document).ready(function() {
+		$('.photos .progress').hide();
+		$('.photos').photosearch({errorText:'No photos found for those tags.'});		
+	});
+</script>
+</head>
+<body>
+	<div id="wrapper">
+		<p>Flickr photo search by <a href='http://webandy.com'>Andy Atkinson</a></p>
+		<p>Enter some tags, adding tags to be more specific.</p>
+		<form class='photos'>			
+			<input type='text' name='tags' class='tags' />
+			<input type="button" class="button" value="Search" /><br/>
+			<div class="progress">
+				<img src="spinner.gif" alt="loading..."/>
+			</div>
+		</form>
+		<div id='images'></div>
+	</div>
+</body>
+</html>

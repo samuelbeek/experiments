@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	 <meta http-equiv="content-language" content="en" />
+	 <meta name="robots" content="all,follow" />
+	 <meta name="author" lang="en" content="Andy Atkinson" />
+	 <meta name="copyright" lang="en" content="Andy Atkinson" />
+	 <meta name="description" content="twitter statuses gadget by Andy Atkinson" />
+<title>Latest Twitter statuses</title>
+<link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />
+<script type="text/javascript" src="js/twitter.js"></script>
+<script type="text/javascript">
+	window.onload = function() {
+		document.getElementById('username').value = "webandy";
+	}
+	function callService(form) {
+		var username  = form.elements["username"].value;
+		var twitter = document.createElement("script");
+		twitter.type = "text/javascript";
+		twitter.src = "http://twitter.com/statuses/user_timeline/"+username+".json?count=10&callback=getTwitterStatuses";
+		document.getElementsByTagName("head")[0].appendChild(twitter);
+	}
+</script>
+</head>
+<body>
+	<div id="container">
+		<form>
+		<div id="twitter">
+			<p>Send a username to the Twitter API 
+			and request 10 statuses in a JSON response.  Process the results as unordered list items.</p>
+			<p>The JS is basic and does not handle keyboard input.  A value is pre-filled, click "Get statuses" or reload the page to make a new request.</p>
+			<label for="username">twitter username</label>
+		   <input name="username" id="username" type="text" />
+		   <input type="button" value="Get statuses" onclick="callService(this.form);"/>
+			<p><ul id="output"></ul></p>
+		</div>
+		</form>
+	</div>
+</body>
+</html>

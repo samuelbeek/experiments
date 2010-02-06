@@ -1,0 +1,77 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+ <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+ <meta http-equiv="content-language" content="en" />
+ <meta name="robots" content="all,follow" />
+ <meta name="author" lang="en" content="Andy Atkinson" />
+ <meta name="copyright" lang="en" content="Andy Atkinson" />
+ <meta name="description" content="flickr gadget by Andy Atkinson" />
+<title>Flickr Ajax search example</title>
+<link rel="stylesheet" href="css/flickr.css" type="text/css" />
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/prototype/1.6.0.2/prototype.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/scriptaculous/1.8.1/scriptaculous.js"></script>
+<script type="text/javascript" src="js/flickr.js"></script>
+<script type="text/javascript">
+	window.onload = function() {
+		var textbox = document.getElementById("search-form");
+		if( window.event ) { 
+			textbox.onkeydown = checkKey;
+		} else {
+			textbox.onkeypress = checkKey;
+		}
+	}
+</script>
+<style>
+	.flickr {
+		border: 2px solid #000;
+		margin: 5px;
+	}
+
+	body {
+	 background-color: #888;
+	 font-family: Lucida Grande;
+	 font-size: 11px;
+	 margin: 35px;
+	 width: 520px;
+	 height: 100%;
+	}
+
+	form {
+	 margin: 0;
+	 margin-bottom: 10px;
+	 background-color: #eee;
+	 border: 5px solid #333;
+	 padding: 25px;
+	}
+</style>
+</head>
+<body>
+	<form>
+		<p>
+			The idea in this example is borrowed from the popular <a href="http://rubyonrails.com/screencasts">Ruby on Rails screencast</a> 
+			"Putting Flickr on Rails," except there is  no Ruby or Rails here, this is all client-side.  The form calls the <a href="http://flickr.com/">Flickr</a>
+			API for public photos that match the keywords in the textbox.  When search results are found, they are displayed gradually using an effect 
+			from the <a href="http://script.aculo.us/">script.aculo.us</a> library.  When no results are found, a message is flashed to inform the user.  
+			Pressing 'enter' in the textbox is handled (form submission is prevented).
+		</p>
+		<p>
+			JavaScript must be enabled.  Tested on Firefox 2, IE7, Safari 3, and iPhone Safari.
+		</p>
+			<p>
+				Developed December 2007 by Andy Atkinson (<a href="http://webandy.com">http://webandy.com</a>).
+			</p>
+			<div id="wrapper" style="display:inline;"> <!-- Put the form controls and spinner on the same line -->
+				<input name="field" id="search-form" type="text" />
+				<input type="button" value="Search" onclick="getPhotos(this.form);"/>
+				<div id="spinnerDiv" style="visibility:hidden;display:inline;">
+					<img src="spinner.gif" alt="loading..." title="loading"></img>
+				</div>
+			</div>
+		<p>
+			<div id="photos" style="display:hidden;"></div>
+		</p>
+	</form>
+</body>
+</html>

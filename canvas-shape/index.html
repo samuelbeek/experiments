@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <title>Drawing a simple shape with canvas</title>
+ <style>
+   body {
+       margin-top: 2%;
+       margin-left: 20%;
+       margin-right: 20%;
+       padding: 5px;
+       text-align: center;
+       background-color: #660000;
+       font-family: helvetica,arial,clean,sans-serif;
+   }
+   div#wrapper {
+     margin: 1em auto;
+       width: 80%;
+       border: 10px solid #8B0000;
+       padding: 1em;
+       background-color: #fff;
+       text-align: left;
+   }
+ </style>
+	<script type="text/javascript" src="canvas-shape.js"></script>
+</head>
+<body onload="draw();">
+	<div id="wrapper">
+		<canvas id="shape" width="300" height="200"></canvas><br/>
+		
+		<h2>Attempting to duplicate the following <a href="http://rubyinside.com">Ruby Inside</a> logo</h2>
+	  <img src="logo.gif" alt="Ruby Inside logo" />
+	
+		<p>Will display an image above where the &lt;canvas/&gt; element is supported.  Basic drawing through JavaScript functions.</p>
+		<p>Andy Atkinson - April 2008</p>
+		<p><a href="http://github.com/webandy/gadgets/tree/master/public/canvas-shape/canvas-shape.js">View <code>canvas-shape.js</code> on github</a></p>
+	</div>
+</body>
+</html>

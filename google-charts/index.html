@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		 <meta http-equiv="content-language" content="en" />
+		 <meta name="robots" content="all,follow" />
+		 <meta name="author" lang="en" content="Andy Atkinson" />
+		 <meta name="copyright" lang="en" content="Andy Atkinson" />
+		 <meta name="description" content="google charts gadget by Andy Atkinson" />
+		<title>
+			Google Charts API front-end
+		</title>
+		<script type="text/javascript" src="js/charts.js">
+</script>
+		<link rel="stylesheet" type="text/css" href="stylesheets/main.css" />
+	</head>
+	<body>
+		<div id="container">
+			<div id="info">
+				<h1>
+					Google Charts API front-end
+				</h1>
+				<h2>
+					Andy Atkinson<br />
+					April 2008
+				</h2>
+				<p>
+					Enter keys and values to send to the <a href="http://code.google.com/apis/chart/">Google Charts API</a>. Add more rows to the table if needed. For example, try "foo 5" and "bar 10" to see results.
+				</p>
+			</div>
+			<form>
+				<table name="chart_table" id="chart_table">
+					<tr>
+						<td>
+							<label for="key1">key1</label><input name="key1" id="key1" type="text" />
+						</td>
+						<td>
+							<label for="value1">value1</label> <input name="value1" id="value1" type="text" />
+						</td>
+					</tr>
+					<tr>
+						<td>
+							&nbsp;
+						</td>
+					</tr>
+					<tr>
+						<td>
+							<input type="button" value="Add Row" onclick="addRow('chart_table');" />
+						</td>
+						<td>
+							<label for="chart_type">Chart type</label> <select name="chart_type" id="chart_type">
+								<option value="p3">
+									3D Pie Chart
+								</option>
+								<option value="lc">
+									Line Chart
+								</option>
+								<option value="ls">
+									Sparklines
+								</option>
+								<option value="bvs">
+									Vertical bar chart
+								</option>
+								<option value="v">
+									Venn diagram
+								</option>
+								<option value="r">
+									Radar chart
+								</option>
+							</select> <input type="button" value="Get chart" onclick="initializeForm(this.form);" />
+						</td>
+					</tr>
+				</table>
+			</form>
+			<div name="chart" id="chart"></div>
+		</div>
+	</body>
+</html>

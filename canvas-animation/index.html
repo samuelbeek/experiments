@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+ <title>Spin the TRMS guy</title>
+  <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js'></script>
+  <script type='text/javascript'>
+    $(function() {
+      var count = 0;
+      function draw() {
+        var canvas = $('#shape')[0];
+        if(canvas.getContext) {
+          var ctx = canvas.getContext('2d');
+          ctx.beginPath();
+          ctx.moveTo(50,50);
+          ctx.lineTo(100,50);
+          //arc(x, y, radius, startAngle, endAngle, anticlockwise)
+          // x and y are center
+          var degrees = 180;
+          var radians = (Math.PI/180)*degrees;
+          ctx.arc(150,50,30,0,radians,true);
+
+          ctx.lineTo(270,50);
+          ctx.lineTo(270,80);
+          ctx.lineTo(200,80);
+          ctx.lineTo(190,130);  //waist
+          ctx.lineTo(240,130); //knee
+          ctx.lineTo(255,190);
+          ctx.lineTo(280,190);
+          ctx.lineTo(280,210);
+          ctx.lineTo(210,210);  // TODO at this point should draw a mirror programatically
+          ctx.lineTo(200,165); // crotch r
+          ctx.lineTo(100,165); // crotch l
+          ctx.lineTo(80,210);
+
+          ctx.lineTo(20,210); // foot bl
+          ctx.lineTo(20,210); 
+          ctx.lineTo(20,190); // foot tl
+          ctx.lineTo(45,190);
+          ctx.lineTo(65,130); 
+          ctx.lineTo(110,130); // left waist
+          ctx.lineTo(90,80);
+          ctx.lineTo(30,80);
+          
+          ctx.lineTo(30,50); // left arm tl
+          
+          // top left portion not filled, but calling fill() completes the shape
+          ctx.fill();
+
+        }
+      }
+      draw();
+      // attach style to canvas element
+      $('canvas').css('-webkit-transition', '-webkit-transform 1s ease-in');
+      $('canvas').mouseover(function() {
+        $('#message').html('Click the TRMS guy to spin!').hide().fadeIn();
+        $(this).css('opacity', '0.8');
+      });
+      $('canvas').mouseout(function() {
+        $('#message').fadeOut().html();
+        $(this).css('opacity', '1');
+      });
+      $('canvas').click(function() {
+        $(this).css('webkitTransform', 'rotate(360deg)');
+      });
+    });
+  </script>
+</head>
+<body>
+  <div id='message'></div>
+	<div id='wrapper'>
+		<canvas id="shape" width="320" height="250"></canvas>
+	</div>
+</body>
+</html>

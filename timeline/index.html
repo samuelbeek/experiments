@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+		"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+		 <meta http-equiv="content-language" content="en" />
+		 <meta name="robots" content="all,follow" />
+		 <meta name="author" lang="en" content="Andy Atkinson" />
+		 <meta name="copyright" lang="en" content="Andy Atkinson" />
+		 <meta name="description" content="SIMILE timeline gadget by Andy Atkinson" />
+    <title>Google calendar events on SIMILE timeline</title>
+    <script src="http://simile.mit.edu/timeline/api/timeline-api.js" type="text/javascript"></script>
+	<script src="timeline.js" type="text/javascript"></script>
+	<style>
+		body {
+			margin-top: 2%;
+			margin-left: 10%;
+			margin-right: 10%;
+			padding: 5px;
+			text-align: center;
+			background-color: #FCFCFC;
+			font-family: helvetica,arial,clean,sans-serif;
+		}
+
+		div#container {
+			margin: 1em auto;
+			width: 90%;
+		 	border: 5px solid #DDDDDD;
+			padding: 1em;
+			background-color: #fff;
+			text-align: left;
+		}
+	</style>
+  </head>
+   <body onload="onLoad();" onresize="onResize();">
+  	<div id="container">
+  		<div id="info">
+	       <h1>Google Calendar events on a SIMILE Timeline</h1>
+	       <h2>Andy Atkinson<br/>May 2008</h2>
+	       <p>This demo demonstrates putting some data on a Timeline component. Find the "Calendar ID" from the Calendar Settings > Calendar Details menu, for example: usa@holiday.calendar.google.com (pre-filled, just click "Plot Events").  For more examples, check out the <a href="http://www.google.com/calendar/render?mode=gallery&cat=POPULAR">Google Calendar Public Gallery</a>.</p>
+		   <p>Number of calendar events fetched is not configurable, may take a second before calendar events appear.</p>
+			 <p>Click and drag Timeline left and right to see events, click event title for more info.</p>
+			</div>
+		 	<p><form>
+		   <label for="calendar-id">Calendar ID</label>
+		   <input name="calendar-id" id="calendar-id" type="text" />
+		   <input type="button" value="Plot events" onclick="getCalendarEvents(this.form);"/>
+		 </form></p>
+	     <p><div id="my-timeline" style="height: 300px; border: 5px solid #DDDDDD;"></div></p>
+  	</div>
+   </body>
+</html>

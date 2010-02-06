@@ -1,0 +1,34 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	 <meta http-equiv="content-language" content="en" />
+	 <meta name="robots" content="all,follow" />
+	 <meta name="author" lang="en" content="Andy Atkinson" />
+	 <meta name="copyright" lang="en" content="Andy Atkinson" />
+	 <meta name="description" content="yahoo search gadget by Andy Atkinson" />	
+<title>Yahoo! search form</title>
+<link rel="stylesheet" href="/code/css/basic-form.css" type="text/css" />
+<link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />
+<script type="text/javascript" src="js/yahoo.js"></script>
+</head>
+<body>
+	<div id="container">
+		<form>
+			<p>Provide a textfield within a form element.  Use JavaScript to get the value out of the 
+			textfield.  Send this value to the Yahoo! Search API and request a JSON response.  Process
+			the search results and display them as unordered list items.
+			</p>
+			<p>
+				This example is very basic and does not include keyboard handling.  Type some keywords and click "Search Yahoo!" with the mouse to retrieve results.  Reload the page to do a new query.
+			</p>
+			<p>
+				<input type="text" name="textfield"/>
+				<input type="button" value="Search Yahoo!" onclick="buildSearchQuery(this.form);" />
+				<ul id="searchResults"></ul>
+			</p>
+		</form>
+	</div>
+</body>
+</html>

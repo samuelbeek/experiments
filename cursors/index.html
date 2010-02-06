@@ -1,0 +1,71 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+ <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+ <meta http-equiv="content-language" content="en" />
+ <meta name="robots" content="all,follow" />
+ <meta name="author" lang="en" content="Andy Atkinson" />
+ <meta name="copyright" lang="en" content="Andy Atkinson" />
+<title>Cursors</title>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"></script>
+<style>
+  .box {
+    font-family:arial, 'lucida console', sans-serif;
+    margin:10px;
+    padding:10px;
+    border:2px solid #a9a9a9;
+    background:#d3d3d3;
+    color:#000;
+    width:200px;
+    opacity:0.3;
+    height:30px;
+  }
+  .col {
+    float:left;
+  }
+</style>
+<script type='text/javascript'>
+  $(function() {
+    $('.box').mouseover(function() {
+      $(this).animate({ 
+        width: "80%",
+        padding:'15px',
+        height: '100px',
+        opacity: 1,
+        fontSize: "4em", 
+        borderWidth: "10px"
+      }, 500);
+    });
+    $('.box').mouseout(function() {
+      $(this).animate({ 
+        width: '200px',
+        padding:'10px',
+        height:'30px',
+        opacity: 0.3,
+        fontSize: "1em", 
+        borderWidth: "2px"
+      }, 500);
+    });
+  });
+</script>
+</head>
+<body>
+  <h1><code>&lt;cursor&gt;</code> property values with gratuitous animations</h1>
+  <h3>Copyright &copy; 2009 Andy Atkinson <a href='http://webandy.com'>http://webandy.com</a></h3>
+  <p><a href='https://developer.mozilla.org/en/CSS/cursor'>Cross-browser compatibility table</a></p>
+  <div class='col'>
+    <div class='box' style='cursor:crosshair'>crosshair</div>
+    <div class='box' style='cursor:help'>help</div>
+    <div class='box' style='cursor:progress'>progress</div>
+    <div class='box' style='cursor:text'>text</div>
+    <div class='box' style='cursor:wait'>wait</div>
+  </div>
+  <div class='col'>
+    <div class='box' style='cursor:move'>move</div>
+    <div class='box' style='cursor:n-resize'>n-resize</div>
+    <div class='box' style='cursor:se-resize'>se-resize</div>
+    <div class='box' style='cursor:url(cookie.cur), auto'>cookie</div>
+  </div>
+</body>
+</html>

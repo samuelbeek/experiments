@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js'></script>
+    <script type='text/javascript'>
+      var degrees = 0;
+      var scale = 1;
+      function adjust() {
+        $('img:first').css('-webkit-transform','rotate('+degrees+'deg)'); degrees=degrees+5;
+        if(degrees % 500 == 0) {
+          if(scale == 5) {
+            scale = 1;
+          }
+          $('img:last').css('-webkit-transform','scale('+scale+')'); scale++;  
+        }
+      };
+      $(document).ready(function() {
+        setInterval(adjust, 1);
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Playing around with two <code>-webkit-transform</code> options. Check this page in webkit. <a href='http://webandy.com'>webandy.com</a></h1>
+    <img src='ruby.png'/>
+    <img src='ruby.png'/>
+  </body>
+</html>

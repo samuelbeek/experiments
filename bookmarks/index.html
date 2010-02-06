@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+ <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+ <meta http-equiv="content-language" content="en" />
+ <meta name="robots" content="all,follow" />
+ <meta name="author" lang="en" content="Andy Atkinson" />
+ <meta name="copyright" lang="en" content="Andy Atkinson" />
+ <meta name="description" content="bookmarks gadget by Andy Atkinson" />
+<title>Bookmarks from del.icio.us</title>
+<link rel="stylesheet" href="/code/css/basic-form.css" type="text/css" />
+<script type="text/javascript" src="js/bookmarks.js"></script>
+<link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />
+<script type="text/javascript">
+	window.onload = function() {
+		document.getElementById('username').value = "andyatkinson";
+	}
+	function callService(form) {
+		var username  = form.elements["username"].value;
+		var delicious = document.createElement("script");
+		delicious.type = "text/javascript";
+		delicious.src = "http://del.icio.us/feeds/json/"+username+"?count=10&callback=getBookmarks";
+		document.getElementsByTagName("head")[0].appendChild(delicious);
+	}
+</script>
+</head>
+<body>
+	<form>
+	<div id="container">
+			<label for="username">del.icio.us username</label>
+		   <input name="username" id="username" type="text" />
+		   <input type="button" value="Get bookmarks" onclick="callService(this.form);"/>
+		<p>Send a username to the del.icio.us
+		API and request 10 bookmarks in a JSON response.  Process the results as unordered list items.  The JS is very basic, for example child nodes are not cleared out for new requests, and keyboard events are not handled.</p>
+		<p>A value is pre-filled, just click "Get bookmarks".  Do a full page reload for new queries.</p>
+		<p><a href="http://github.com/webandy/gadgets/tree/master/public/bookmarks/js/bookmarks.js">View <code>bookmarks.js</code> on github</a></p>
+		<p><ul id="bookmarks"></ul></p>
+	</div>
+	</form>
+</body>
+</html>
