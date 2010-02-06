@@ -2,28 +2,40 @@
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
- <meta http-equiv="content-type" content="text/html; charset=utf-8" />
- <meta http-equiv="content-language" content="en" />
- <meta name="robots" content="all,follow" />
- <meta name="author" lang="en" content="Andy Atkinson" />
- <meta name="copyright" lang="en" content="Andy Atkinson" />
- <meta name="description" content="bookmarks gadget by Andy Atkinson" />
-<title>Bookmarks from del.icio.us</title>
-<link rel="stylesheet" href="/code/css/basic-form.css" type="text/css" />
-<script type="text/javascript" src="js/bookmarks.js"></script>
-<link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />
-<script type="text/javascript">
-	window.onload = function() {
-		document.getElementById('username').value = "andyatkinson";
-	}
-	function callService(form) {
-		var username  = form.elements["username"].value;
-		var delicious = document.createElement("script");
-		delicious.type = "text/javascript";
-		delicious.src = "http://del.icio.us/feeds/json/"+username+"?count=10&callback=getBookmarks";
-		document.getElementsByTagName("head")[0].appendChild(delicious);
-	}
-</script>
+  <title>Bookmarks from del.icio.us</title>
+  <link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />
+  <script type="text/javascript">
+    // Written by Andy Atkinson, November 2007, http://webandy.com
+    function getBookmarks(data) {
+     var ul = document.getElementById("bookmarks");
+     for( var i=0; i < data.length; i++ ) {
+      var title = document.createTextNode( data[i].d ); // Title of the bookmark
+      var notes = document.createTextNode( data[i].n ); // Notes about the bookmark
+      var url = data[i].u; // The URL for the bookmark
+
+      var link = document.createElement("a");
+       link.setAttribute("href", url);
+       link.appendChild(title);
+      var brk = document.createElement("br");
+      var li = document.createElement("li");
+      li.appendChild(link);
+      li.appendChild(brk);
+      if( notes.nodeValue != "undefined" ) li.appendChild(notes);
+      ul.appendChild(li);	
+     }
+    }
+    
+  	window.onload = function() {
+  		document.getElementById('username').value = "andyatkinson";
+  	}
+  	function callService(form) {
+  		var username  = form.elements["username"].value;
+  		var delicious = document.createElement("script");
+  		delicious.type = "text/javascript";
+  		delicious.src = "http://del.icio.us/feeds/json/"+username+"?count=10&callback=getBookmarks";
+  		document.getElementsByTagName("head")[0].appendChild(delicious);
+  	}
+  </script>
 </head>
 <body>
 	<form>
