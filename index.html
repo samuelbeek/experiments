@@ -1,52 +1,76 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Experiments</title>
+    <title>Web experiments by Andy Atkinson</title>
+    <style type="text/css" media="screen">
+      body{background-color:#ededed;font-family:Helvetica, Arial, sans-serif;}
+      #container{
+        width:500px;
+        margin:0 auto;
+        background-color:#f0f0f0;
+        border:1px solid #ddd;
+        padding:5px 20px 5px 20px;
+        -moz-border-radius:4px;
+        -webkit-border-radius:4px;
+      }
+      #container h1, h2{text-shadow:1px 1px 0 #fff;margin:0;}
+      #container #intro{padding:20px 0;}
+      #container #intro .info{font-family:Georgia, serif;}
+      #container #intro .info a{color:#000;}
+      #container #experiments ul{padding:10px 0;margin:0;}
+      #container #experiments ul li{list-style-type:none;padding:5px 0;}
+      #container #experiments ul li a{color:#000;}
+      #container #experiments ul li .experiment{padding:0;color:#444;font-family:Georgia, serif;line-height:16px;font-size:14px;}
+      #container #experiments ul li .experiment h3{line-height:20px;font-family:Helvetica, sans-serif;padding:0;margin:0;font-size:16px;}
+    </style>
   </head>
   <body>
-    <div id='experiments'>
-      <h1>Experiments</h1>
-      <ul>
-        <li>
-          <div class='experiment'><a href='svu/index.html'>Law and Order: Special Victims Unit (intro)</a></div>
-        </li>
-        <li>
-          <div class='experiment'><a href='transforms/index.html'>CSS transforms</a></div>
-        </li>
-        <li>
-          <div class='experiment'><a href='canvas-animation/index.html'>Animation with canvas element</a></div>
-        </li>
-        <li>
-          <div class='experiment'><a href='canvas-shape/index.html'>Drawing a shape with canvas element</a></div>
-        </li>
-        <li>
-          <div class='experiment'><a href='cursors/index.html'>CSS cursors</a></div>
-        </li>
-        <li>
-          <div class='experiment'><a href='canvas-shape/index.html'>Drawing a shape with canvas element</a></div>
-        </li>
-        <li>
-          <div class='experiment'><a href='flickr-jquery/index.html'>Flickr jQuery</a></div>
-        </li>
-        <li>
-          <div class='experiment'><a href='flickr-prototype/index.html'>Flickr Prototype</a></div>
-        </li>
-        <li>
-          <div class='experiment'><a href='google-charts/index.html'>Google charts frontend</a></div>
-        </li>
-        <li>
-          <div class='experiment'><a href='timeline/index.html'>MIT Simile Timeline control</a></div>
-        </li>
-        <li>
-          <div class='experiment'><a href='flickr/index.html'>Flickr search example</a></div>
-        </li>
-        <li>
-          <div class='experiment'><a href='twitter/index.html'>Twitter API example</a></div>
-        </li>
-        <li>
-          <div class='experiment'><a href='yahoo-search/index.html'>Yahoo! Search</a></div>
-        </li>
-      </ul>
+    <div id='container'>
+      <div id='intro'>
+        <h1>Web experiments</h1>
+        <div class='info'><em>By</em> <a href='http://webandy.com'>Andy Atkinson</a></div>
+      </div>
+      <div id='experiments'>
+        <h2>Experiments</h2>
+        <ul>
+          <li>
+            <div class='experiment'><h3><a href='svu/index.html'>Law and Order: Special Victims Unit (intro)</a></h3>Using multiple text-shadows and CSS webkit animations, spent a few hours recreating the intro for fun.</div>
+          </li>
+          <li>
+            <div class='experiment'><h3><a href='canvas-animation/index.html'>Animation with canvas element</a></h3>Draw a shape with canvas element and animate it</div>
+          </li>
+          <li>
+            <div class='experiment'><h3><a href='transforms/index.html'>CSS transforms</a></h3>Animate an image with css</div>
+          </li>
+          <li>
+            <div class='experiment'><h3><a href='canvas-shape/index.html'>Drawing a shape with canvas element</a></h3>Draw a shape with canvas element</div>
+          </li>
+          <li>
+            <div class='experiment'><h3><a href='cursors/index.html'>CSS cursors</a></h3>Page showing all CSS cursors</div>
+          </li>
+          <li>
+            <div class='experiment'><h3><a href='flickr-jquery/index.html'>Flickr jQuery</a></h3>Flickr search code rewritten with jQuery</div>
+          </li>
+          <li>
+            <div class='experiment'><h3><a href='flickr-prototype/index.html'>Flickr Prototype</a></h3>Flickr search code rewritten with Prototype</div>
+          </li>
+          <li>
+            <div class='experiment'><h3><a href='google-charts/index.html'>Google charts frontend</a></h3>Basic frontend to Google charts</div>
+          </li>
+          <li>
+            <div class='experiment'><h3><a href='timeline/index.html'>MIT Simile Timeline</a></h3>Sample implementation of the Simile control</div>
+          </li>
+          <li>
+            <div class='experiment'><h3><a href='flickr/index.html'>Flickr search example</a></h3>Basic Ajax search with dynamic script tags</div>
+          </li>
+          <li>
+            <div class='experiment'><h3><a href='twitter/index.html'>Twitter API example</a></h3>Basic Ajax twitter search with dynamic script tags</div>
+          </li>
+          <li>
+            <div class='experiment'><h3><a href='yahoo-search/index.html'>Yahoo! Search</a></h3>Basic Ajax search with dynamic script tags</div>
+          </li>
+        </ul>
+      </div>
     </div>
   </body>
 </html>
