@@ -1,0 +1,138 @@
+<!-- Demo illustrating move and pinch out multitouch event handling for iPhone and iPad 
+
+Programmed by Andy Atkinson and Scott Jann March 2010. Tested on iPad and iPhone, works better on iPad.
+-->
+
+
+<html>
+  <head>
+    <script src='/javascripts/jquery-1.4.2.min.js'></script>
+    <style type="text/css" media="screen">
+      #message {
+        color:#000;
+        font-size:50px;
+        position:absolute;
+        top:0;
+        left:0;
+        z-index:2;
+      }
+      #box {
+        background-color:blue;
+        position:absolute;
+        top:200px;  
+        left:200px;
+        width:200px;
+        height:200px;
+        margin:0 auto;
+        z-index:3;
+      }
+    </style>
+    <script type="text/javascript" charset="utf-8">
+      $(function() {        
+        var prevTouchPos;
+        var xOffset, yOffset, boxWidth, boxHeight;
+        
+        $('body').bind('foo', function() { 
+          $('#message').css('color', 'pink'); 
+        });
+         
+        $('#box').get(0).addEventListener(
+          'touchstart',
+          function(e)
+          {
+            e.preventDefault();
+            var startLeft = parseInt($('#box').css('left'));
+            var startTop = parseInt($('#box').css('top'));
+            
+            if( e.touches.length == 1 ) {
+              var touchLeft = e.touches[0].pageX;
+              var touchTop = e.touches[0].pageY;
+              xOffset = touchLeft - startLeft;
+              yOffset = touchTop - startTop;
+              $('#xOffset').text(xOffset);
+              $('#yOffset').text(yOffset);
+        	  }
+        	},
+        	false
+        );
+        
+      	 $('#box').get(0).addEventListener(
+           'touchmove',
+            function(e)
+            {
+              e.preventDefault();
+              if( e.touches.length == 1 ) {
+                var x = e.touches[0].pageX;
+                var y = e.touches[0].pageY;
+
+                $('#currentTop').text(y-yOffset);
+                $('#currentLeft').text(x-xOffset);
+
+        		    $('#box').css('left', x-xOffset+'px');
+        		    $('#box').css('top', y-yOffset+'px');
+              }
+          	},
+          	false
+          );
+          	
+          $('#box').get(0).addEventListener(
+            'gesturestart',
+            function(e) {
+              e.preventDefault();
+              boxWidth = $('#box').width();
+              boxHeight = $('#box').height();
+              xOffset = parseInt($('#box').css('left'));
+      		    yOffset = parseInt($('#box').css('top'));
+            },
+            false
+          );
+          	
+    		 $('#box').get(0).addEventListener(
+            'gesturechange',
+        		function(e)
+        		{
+        		  e.preventDefault();
+              $('#gestureChange').append('yes');
+              $('#scale').text(e.scale);
+            
+              var s = e.scale * 0.5;
+              var w = boxWidth * s;
+              var h = boxHeight * s;
+              $('#box').width(w);
+              $('#box').height(h);
+            
+              var xCenter = xOffset + boxWidth / 2;
+              var yCenter = yOffset + boxHeight / 2;
+              $('#box').css('left', xCenter - w / 2 +'px');
+              $('#box').css('top', yCenter - h / 2 +'px');
+          		},
+          		false
+          	);
+          
+          $('#box').get(0).addEventListener(
+            'gestureend',
+            function(e) {
+              e.preventDefault();
+              $('#gestureChange').html('');
+            },
+            false
+          );
+        
+      });
+    </script>
+  </head>
+  <body>
+    <div id='message'></div>
+    <div id='hud'>
+      <table>
+        <tr><td>xOffset:</td><td><div id='xOffset'></div></td></tr>
+        <tr><td>yOffset:</td><td><div id='yOffset'></div></td></tr>
+        <tr><td>currentTop:</td><td><div id='currentTop'></div></td></tr>
+        <tr><td>currentLeft:</td><td><div id='currentLeft'></div></td></tr>
+        <tr><td>gestureChanging:</td><td><div id='gestureChange'></div></td></tr>
+        <tr><td>scale:</td><td><div id='scale'></div></td></tr>
+      </table>
+    </div>
+    <div id='box'></div>
+  </body>
+</html>
