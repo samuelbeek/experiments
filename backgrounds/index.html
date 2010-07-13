@@ -1,0 +1,74 @@
+<!-- Background images were designed by Amber Ward. 
+Testing out layering some text between images applying effects to the text in webkit.
+2010 Andy Atkinson http://webandy.com @webandy
+-->
+<html>
+  <head>
+    <title>Backgrounds</title>
+    <style type='text/css'>
+      body{height:200px;overflow:hidden;}
+      #container {
+        position:absolute;
+        top:0px;
+        left:0px;
+      }
+      #grass1, #grass2 {
+        width:800px;
+        height:500px;
+      }
+      #grass1 {
+        position:absolute;
+        background:url(grass.png) top left no-repeat;
+        z-index:3;
+        overflow:hidden;
+      }
+      #text {
+        color:#fff;
+        font-family:"Gill Sans";
+        font-size:100px;
+        font-weight:bold;
+        opacity:0;
+        padding:300px 0 0 0;
+        position:absolute;
+        text-align:center;
+        width:800px;
+        z-index:2;
+      }
+      #grass2 {
+        position:absolute;
+        background:url(grass2.png) top left no-repeat;
+        z-index:1;
+      }
+      #text.visible {
+        -webkit-transition: all 0.8s linear;
+        text-shadow:1px 1px 5px #000;
+        opacity:1;
+        padding:100px 0 0 0;
+      }
+      #text.visible.glow{
+        text-shadow:0px 0px 100px #ff0;
+      }
+    </style>
+    <script type="text/javascript" charset="utf-8">
+      if (document.addEventListener) {
+        document.addEventListener("DOMContentLoaded", function() {
+          var text = document.getElementById('text');
+          text.className += 'visible';
+          setTimeout(function() {
+            text.className += ' glow';
+            setTimeout(function() {
+              text.className = 'visible';
+            }, 2000);
+          }, 2000);
+        }, false);
+      }
+    </script>
+  </head>
+  <body>
+    <div id='container'>
+      <div id='grass1'></div>
+      <div id='text'>Lorem Ipsum</div>
+      <div id='grass2'></div>
+    </div>
+  </body>
+</html>
