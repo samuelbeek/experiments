@@ -1,0 +1,94 @@
+<!-- Copyright 2010 Andy Atkinson http://webandy.com @webandy
+  Test area for different text effects
+ -->
+
+<html>
+  <head>
+    <title>Text effects</title>
+    <script type="text/javascript" src='jquery-1.4.2.min.js'>
+    </script>
+    <script type="text/javascript">
+      $(function() {
+        
+        
+        // rebuilding strings crazy example
+        var letters = [];
+        var index = 0;
+        var maxLength = $('#letterswipe').text().length;
+        
+        var interval = setInterval(function() {
+          $.each($('#letterswipe').text(), function(j, letter) {
+            if( letter != ' ' ) {
+              if( j == index ) {
+                var elem = $('<span class="effect" />').text(letter);
+                var dummy = $('<div />').html(elem);
+                letters.push(dummy.html());
+              } else {
+                letters.push(letter);
+              }
+            }
+          });
+          
+          $('#letterswipe').html(letters.join(''));
+          if( index == maxLength ) {
+            clearInterval(interval);
+            return null;
+          } else {
+            index++;
+            letters = [];
+          }          
+        }, 1000);
+        
+        
+        
+        // second example, should be better
+        var newHtml = '';
+        $.each($('#letterswipe2').text(), function(i, letter) {
+          newHtml += "<span>" + letter + "</span>";
+        });
+        $('#letterswipe2').html(newHtml);
+        
+        var childSpan = 0;
+        var newMaxLength = $('#letterswipe2').text().length;
+        var newinterval = setInterval(function() {
+          if( childSpan == newMaxLength ) {
+            clearInterval(newinterval);
+            return null;
+          } else {
+            var span = $('#letterswipe2').find('span').get(childSpan);
+            $(span).addClass('effect');
+            //remove the effect after a brief period
+            setTimeout(function() {$(span).removeClass('effect')}, 2000);
+            childSpan++;
+          }
+        }, 100);
+        
+      });
+    </script>
+    <style type="text/css" media="screen">
+      body{background-color:#000;overflow:hidden;}
+      #letterswipe, #letterswipe2 {
+        font-size:100px;
+        font-family:Helvetica;
+        color:#aaa;
+      }
+      p {
+        font-size:20px;
+        font-family:Helvetica;
+        color:#fff;
+      }
+      #letterswipe .effect, #letterswipe2 .effect {
+        -webkit-transition: all 1s linear;
+        color:#fff;
+        /*applying second shadow breaks the animation*/
+        text-shadow:0px 0px 200px #ff0;
+      }
+    </style>
+  </head>
+  <p>Text effects test area, Andy Atkinson http://webandy.com, July 2010</p>
+  <p>Loop through string, wrap a char with span elem, display new string</p>
+  <h1 id='letterswipe'>ABCDEFGHIJKLMNOP</h1>
+  
+  <p>Wrap all chars with elems, loop through each and add class, animate shadow effect</p>
+  <h1 id='letterswipe2'>ABCDEFGHIJKLMNOP</h1>
+</html>
