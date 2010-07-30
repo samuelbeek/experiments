@@ -1,0 +1,133 @@
+<!-- trying to make a realistic checker with only html/css/canvas -->
+<!-- Copyright 2010 Andy Atkinson http://webandy.com @webandy -->
+<!-- work in progress -->
+
+<html>
+  <head>
+    <script type="text/javascript" src='javascripts/jquery-1.4.2.min.js'></script>
+    <script type="text/javascript" src='javascripts/canto.js'></script>
+    <style type="text/css" media="screen">
+      #board .checker {
+        border-radius:150px;
+        -moz-border-radius:150px;
+        -webkit-border-radius:150px;
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+        -moz-box-shadow:0 0 50px rgba(0, 0, 0, 0.5);
+        -webkit-box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+        height:300px;
+        width:300px;
+        margin:1px auto 1px auto;
+        border:1px solid #aaa;
+        cursor:move;
+        position:relative;
+      }
+      #board .checker.red {
+        background-color:#8B1A1A;
+      }
+      #board .checker.black {
+        background-color:#000;
+      }
+      .checker .inner {
+        border-radius:150px;
+        -moz-border-radius:150px;
+        -webkit-border-radius:150px;
+        box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+        -moz-box-shadow:0 0 50px rgba(0, 0, 0, 0.5);
+        -webkit-box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+        position:absolute;
+        top:20px;
+        left:20px;
+        width:260px;
+        height:260px;
+        background-color:#8B1A1A;
+        border:1px solid #660000;
+        z-index:2;
+      }
+      .checker .innerring {
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        -moz-box-shadow:0 0 10px rgba(0, 0, 0, 0.3);
+        -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        border-radius:150px;
+        -moz-border-radius:150px;
+        -webkit-border-radius:150px;
+        position:absolute;
+        top:50px;
+        left:50px;
+        width:200px;
+        height:200px;
+        border:2px solid #800000;
+        z-index:2;
+      }
+      #star {
+        position:absolute;
+        top:110px;
+        left:110px;
+        width:100px;
+        height:100px;
+        z-index:2;
+      }
+      .checker .line {
+        position:absolute;
+        top:50%;
+        left:0;
+        width:300px;
+        height:1px;
+        background-color:#660000;
+        z-index:1;
+      }
+      .checker .reflection {
+        -moz-transform:rotate(80deg);
+        border-radius:150px;
+        -moz-border-radius:150px;
+        -webkit-border-radius:150px;
+        position:absolute;
+        top:20px;
+        left:20px;
+        width:260px;
+        height:260px;
+        background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(rgba(0,0,0,0)), to(#fff));
+        background:-moz-linear-gradient(19% 75% 90deg,rgba(0,0,0,0), #fff);
+        opacity:0.3;
+        z-index:3;
+      }
+    </style>
+    
+    <script type="text/javascript" charset="utf-8">
+      $(function() {
+        for(var i=5; i< 360; i += 5) {
+          var rotation = 'rotate(' + i + 'deg)';
+          var line = $('<div />').addClass('line').css('-moz-transform', rotation);
+          $('.checker').append(line);
+        }
+        
+        canto("star").moveTo(80, 40).
+                      lineTo(120, 0).
+                      lineTo(160, 40).
+                      lineTo(240, 40).
+                      lineTo(180, 80).
+                      lineTo(220, 120).
+                      lineTo(120, 100).
+                      lineTo(20, 120).
+                      lineTo(60, 80).
+                      lineTo(0, 40).
+                      lineTo(80, 40).
+                      stroke({lineWidth: 2, strokeStyle: '#660000'});
+        
+        });
+    </script>
+    
+  </head>
+  <body>
+    <p>Tested only in Firefox 3.6</p>
+    <div id='board'>
+      <div class='checker red'>
+        <div class='line'></div>
+        <div class='line2'></div>
+        <div class='inner'></div>
+        <div class='innerring'></div>
+        <canvas id="star"></canvas>
+        <div class='reflection'></div>
+      </div>
+    </div>
+  </body>
+</html>
