@@ -66,7 +66,7 @@
         height:100px;
         z-index:2;
       }
-      .checker .line {
+      .checker .darkLine {
         position:absolute;
         top:50%;
         left:0;
@@ -75,8 +75,18 @@
         background-color:#660000;
         z-index:1;
       }
+      .checker .highlightLine {
+        position:absolute;
+        top:50%;
+        left:0;
+        width:300px;
+        height:1px;
+        background-color:rgba(255,255,255,0.1);
+        z-index:1;
+      }
       .checker .reflection {
         -moz-transform:rotate(80deg);
+        -webkit-transform:rotate(80deg)
         border-radius:150px;
         -moz-border-radius:150px;
         -webkit-border-radius:150px;
@@ -96,8 +106,13 @@
       $(function() {
         for(var i=5; i< 360; i += 5) {
           var rotation = 'rotate(' + i + 'deg)';
-          var line = $('<div />').addClass('line').css('-moz-transform', rotation);
-          $('.checker').append(line);
+          var darkLine = $('<div />').addClass('darkLine').css('-moz-transform', rotation).css('-webkit-transform', rotation);
+          $('.checker').append(darkLine);
+        }
+        for(var i=6; i< 360; i += 5) {
+          var rotation = 'rotate(' + i + 'deg)';
+          var highlightLine = $('<div />').addClass('highlightLine').css('-moz-transform', rotation).css('-webkit-transform', rotation);
+          $('.checker').append(highlightLine);
         }
         
         canto("star").moveTo(80, 40).
