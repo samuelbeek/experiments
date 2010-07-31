@@ -17,7 +17,6 @@
         height:300px;
         width:300px;
         margin:1px auto 1px auto;
-        border:1px solid #aaa;
         cursor:move;
         position:relative;
       }
@@ -60,8 +59,8 @@
       }
       #star {
         position:absolute;
-        top:110px;
-        left:110px;
+        top:105px;
+        left:111px;
         width:100px;
         height:100px;
         z-index:2;
@@ -70,7 +69,7 @@
         position:absolute;
         top:50%;
         left:0;
-        width:300px;
+        width:298px;
         height:1px;
         background-color:#660000;
         z-index:1;
@@ -79,7 +78,7 @@
         position:absolute;
         top:50%;
         left:0;
-        width:300px;
+        width:298px;
         height:1px;
         background-color:rgba(255,255,255,0.1);
         z-index:1;
@@ -119,11 +118,11 @@
                       lineTo(120, 0).
                       lineTo(160, 40).
                       lineTo(240, 40).
-                      lineTo(180, 80).
+                      lineTo(180, 70).
                       lineTo(220, 120).
-                      lineTo(120, 100).
-                      lineTo(20, 120).
-                      lineTo(60, 80).
+                      lineTo(120, 90).
+                      lineTo(30, 120).
+                      lineTo(60, 70).
                       lineTo(0, 40).
                       lineTo(80, 40).
                       stroke({lineWidth: 2, strokeStyle: '#660000'});
@@ -133,7 +132,7 @@
     
   </head>
   <body>
-    <p>Tested only in Firefox 3.6</p>
+    <p>Checker piece, tested in Firefox 3.6 and Safari 5</p>
     <div id='board'>
       <div class='checker red'>
         <div class='line'></div>
