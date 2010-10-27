@@ -1,0 +1,24 @@
+body {
+  overflow:auto;
+  font-family:Helvetica, sans-serif;
+  background-color:#f0f0f0;
+}
+#description{
+  background-color:#fff;
+  width:500px;
+  margin:0 auto;
+  line-height:1.2em;
+  font-size:1.2em;
+  padding:20px;
+}
+#description h3 {
+  font-size:1.5em;
+  padding:1em 0;
+}
+#description ul li {
+  list-style-type:disc;
+  margin-left:20px;
+}
+#description p {
+  padding:0.5em 0;
+}

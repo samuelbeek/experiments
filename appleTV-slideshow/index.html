@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+  <title>AppleTV float slideshow effect with Flickr photos</title>
+  <head>
+    <link rel="stylesheet" href="css/reset.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="css/application.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="css/jquery.appleTV-slideshow.css" type="text/css" media="screen" />
+  </head>
+  <body>
+    <div id='slideshow'></div>
+    <div id='description'>
+      <p>appleTV-slideshow is [the start of] a jQuery plugin that attemps to recreate the "Float" slideshow from the Apple TV (launched September 2010) using smooth webkit animations <strong>(webkit/chrome/safari only)</strong> of photos pulled from Flickr.</p>
+      
+      <p>I just guessed the values of how to animate the photos upwards, the basic idea is here, but getting real accuracy would require a lot more work, so I'm putting this project here as a starting point.</p>
+      
+      <p>The real slideshow has photos animating individually with at least 3 different speeds, here I have them all animating the same.</p>
+
+      <p>This was done for fun as an experiment in a few hours, though could be used practically with some work as a slideshow within a div container on a page. The following TODOs represent some more work I'd like to do to make the effect more like the original.</p>
+
+      <p><a href='#' id='launch'>View the slideshow</a></p>
+
+      <h3>Todo</h3>
+      <ul>
+        <li>append 3 layers into container element and split images amongst them as DOM children</li>
+        <li>add different durations to the photos</li>
+        <li>spread them out to take up more screen real estate</li>
+        <li>fix 3d flip to occur after Y translate is done</li>
+      </ul>
+
+      <h3>Usage</h3>
+      <code>$('#slideshow').appleTV({source: 'flickr', nsid: '39474694@N00', lang: 'en-us'});</code>
+
+      <h3>Copyright</h3>
+      <p>Copyright 2010 Andy Atkinson <a href='http://webandy.com'>http://webandy.com</a></p>
+
+      <p>The name "Apple TV" belongs to Apple Inc. This is a fan project and is not affiliated with Apple in any way.</p>
+    </div>
+    
+    <!-- scripts -->
+    <script src='js/jquery-1.4.2.min.js'></script>
+    <script src='js/jquery.appleTV-slideshow.js'></script>
+    <script>
+      $(function() {
+        $('#launch').click(function(e) {
+          e.preventDefault();
+          $('#description').fadeOut();
+          $('body').css({'backgroundColor': '#000', 'overflow': 'hidden'});
+          $('#slideshow').appleTV();
+        });
+      });
+    </script>
+  </body>
+</html>
