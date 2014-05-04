@@ -1,7 +1,5 @@
-// (c) 2009 Andy Atkinson http://webandy.com
+// (c) 2009 Andy Atkinson http://andyatkinson.com
 // jquery flickr public photo search plugin
-// supports changing the tag mode and customizing the error text as options
-// http://github.com/webandy/gadgets/blob/master/public/flickr-jquery/js/jquery.photosearch.js
 (function($) {
 	$.fn.photosearch = function(options) {
 		var defaults = {
